@@ -25,10 +25,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html do
-          redirect_to book_url(@book)
-          flash[:notice] = t('flash.create.notice')
-        end
+        format.html { redirect_to book_url(@book), notice: t('.notice') }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,10 +38,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html do
-          flash[:notice] = t('flash.update.notice')
-          redirect_to book_url(@book)
-        end
+        format.html { redirect_to book_url(@book), notice: t('.notice') }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,10 +52,7 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html do
-        flash[:notice] = t('flash.destroy.notice')
-        redirect_to books_url
-      end
+      format.html { redirect_to books_url, notice: t('.notice') }
       format.json { head :no_content }
     end
   end

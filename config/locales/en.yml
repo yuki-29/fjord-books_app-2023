@@ -11,6 +11,12 @@ en:
       title: Books
       new: New book
       edit: Editing book
+    create:
+      notice: Book was successfully reated.
+    update:
+      notice: Book was successfully reated.
+    destroy:
+      notice: Book was successfully destroyed.
   helpers:
     submit:
       create: Create Book
@@ -22,10 +28,4 @@ en:
       edit: Edit this book
       back: Back to books
       destroy: Destroy this book
-  flash:
-    update:
-      notice: Book was successfully reated.
-    destroy:
-      notice: Book was successfully destroyed.
-    create:
-      notice: Book was successfully reated.
+

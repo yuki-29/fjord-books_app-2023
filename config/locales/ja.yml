@@ -11,6 +11,12 @@ ja:
       title: 本の一覧
       new: 本の新規登録
       edit: 本の編集
+    create:
+      notice: 本を登録しました。
+    update:
+      notice: 本を更新しました。
+    destroy:
+      notice: 本を削除しました。
   helpers:
     submit:
       create: 保存
@@ -22,10 +28,4 @@ ja:
       edit: 編集
       back: 一覧へ戻る
       destroy: 削除
-  flash:
-    update:
-      notice: 本を更新しました。
-    destroy:
-      notice: 本を削除しました。
-    create:
-      notice: 本を登録しました。
+
