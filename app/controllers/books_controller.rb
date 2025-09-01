@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
+  PER_PAGE = 3
   before_action :set_book, only: %i[show edit update destroy]
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = Book.order(:id).page(params[:page]).per(PER_PAGE)
   end
 
   # GET /books/1 or /books/1.json
