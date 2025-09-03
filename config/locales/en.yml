@@ -1,5 +1,7 @@
 en:
   activerecord:
+    models:
+      book: book
     attributes:
       book:
         title: Title
@@ -12,19 +14,19 @@ en:
       new: New book
       edit: Editing book
     create:
-      notice: Book was successfully reated.
+      notice: "%{item} was successfully created."
     update:
-      notice: Book was successfully reated.
+      notice: "%{item} was successfully updated."
     destroy:
-      notice: Book was successfully destroyed.
+      notice: "%{item} was successfully destroyed."
   helpers:
     submit:
       create: Create Book
       update: Update Book
   common:
     actions:
-      new: New book
-      show: Show this book
-      edit: Edit this book
-      back: Back to books
-      destroy: Destroy this book
+      new: Create new
+      show: Show
+      edit: Edit
+      back: Back
+      destroy: Destroy

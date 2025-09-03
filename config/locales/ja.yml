@@ -1,5 +1,7 @@
 ja:
   activerecord:
+    models:
+      book: 本
     attributes:
       book:
         title: タイトル
@@ -12,11 +14,11 @@ ja:
       new: 本の新規登録
       edit: 本の編集
     create:
-      notice: 本を登録しました。
+      notice: "%{item}を登録しました。"
     update:
-      notice: 本を更新しました。
+      notice: "%{item}を更新しました。"
     destroy:
-      notice: 本を削除しました。
+      notice: "%{item}を削除しました。"
   helpers:
     submit:
       create: 保存
