@@ -18,3 +18,8 @@
 <nav class="page-nav">
     <%= link_to t('views.common.new', name: Book.model_name.human.downcase), new_book_path %>
 </nav>
+
+<nav>
+    <%= link_to('アカウント編集', "/") %>
+    <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+</nav>
