@@ -10,12 +10,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:postal_code, :address, :self_introduction])
   end
 
-  # アカウント編集後のリダイレクト先
-  def after_update_path_for(resource)
-    puts "====== after_update_path_forが呼ばれました！ ======"
-    edit_user_registration_path
-  end
-
   private
 
   # ログイン後のリダイレクト先
