@@ -1,5 +1,5 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<!--更新時のフラッシュメッセージ、これを入れると、値が更新されない。-->
 <p><%= notice %></p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -32,7 +32,7 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
-  <!-- ここの下を追加 郵便番号、住所、自己紹介文 -->
+
   <div class="field">
     <%= f.label :postal_code %><br />
     <%= f.text_field :postal_code, autocomplete: "postal_code" %>
@@ -57,4 +57,4 @@
 
 <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", books_path %>

@@ -1,0 +1,25 @@
+<h1>ユーザー 一覧</h1>
+
+<div id="users" class="index-items">
+<% @users.each do |user| %>
+  <div class="index-item">
+    <div id="<%= dom_id user %>">
+      <p>
+        <strong>登録日:</strong>
+        <%= user.created_at.strftime("%Y年%m月%d日") %>
+      </p>
+      <p>
+        <strong>email:</strong>
+        <%= user.email %>
+      </p>
+      <p>
+        <%= link_to "ユーザー詳細", "/users/#{user.id}" %>
+      </p>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<%= paginate @users %>
+
+<%= link_to "Back", books_path %>

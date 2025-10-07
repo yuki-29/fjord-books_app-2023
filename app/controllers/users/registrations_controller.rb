@@ -20,9 +20,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-    def update
-      redirect_to edit_user_registration_path, notice: '更新しました。'
-    end
+  # def update
+  #   super
+  # end
 
   # DELETE /resource
   # def destroy
