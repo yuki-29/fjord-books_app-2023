@@ -1,36 +1,37 @@
-<h1>ユーザー詳細</h1>
+<h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
+
 <nav class="user-edit">
   <% if @user.id == current_user.id %>
-    <%= link_to "アカウント編集", edit_user_registration_path %>
-  <%end%>
+    <%= link_to t('views.common.edit', name: User.model_name.human), edit_user_registration_path %>
+  <% end %>
 </nav>
 
 <div id="users" class="index-items">
 <div class="index-item">
 <div id="<%= dom_id @user %>">
   <p>
-    <strong>登録日:</strong>
-    <%= @user.created_at%>
+    <strong><%= User.human_attribute_name(:created_at) %>:</strong>
+    <%= @user.created_at.strftime("%Y年%m月%d日") %>
   </p>
   <p>
-    <strong>email:</strong>
+    <strong><%= User.human_attribute_name(:email) %>:</strong>
     <%= @user.email%>
   </p>
   <p>
-    <strong>postal_code:</strong>
+    <strong><%= User.human_attribute_name(:postal_code) %>:</strong>
     <%= @user.postal_code%>
   </p>
   <p>
-    <strong>address:</strong>
+    <strong><%= User.human_attribute_name(:address) %>:</strong>
     <%= @user.address%>
   </p>
   <p>
-    <strong>self_introduction:</strong>
+    <strong><%= User.human_attribute_name(:self_introduction) %>:</strong>
     <%= @user.self_introduction%>
   </p>
 </div>
 </div>
 </div>
 <nav>
-  <%= link_to "Back", users_path %>
+  <%= link_to t('views.common.back', name: User.model_name.human), users_path %>
 </nav>

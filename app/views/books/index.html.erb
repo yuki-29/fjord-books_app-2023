@@ -1,9 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <nav class="user-menus">
-  <%= link_to('ユーザー一覧', users_path) %>
-  <%= link_to('アカウント編集', edit_user_registration_path) %>
-  <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <%= link_to(t('views.common.title_index', name: User.model_name.human), users_path) %>
+  <%= link_to(t('views.common.title_edit', name: User.model_name.human), edit_user_registration_path) %>
+  <%= button_to t('views.common.log_out'), destroy_user_session_path, method: :delete %>
 </nav>
 
 <h1><%= t('views.common.title_index', name: i18n_pluralize(Book.model_name.human)) %></h1>

@@ -1,19 +1,19 @@
-<h1>ユーザー 一覧</h1>
+<h1><%= t('views.common.title_index', name: User.model_name.human)%></h1>
 
 <div id="users" class="index-items">
 <% @users.each do |user| %>
   <div class="index-item">
     <div id="<%= dom_id user %>">
       <p>
-        <strong>登録日:</strong>
+        <strong><%= User.human_attribute_name(:created_at)%>:</strong>
         <%= user.created_at.strftime("%Y年%m月%d日") %>
       </p>
       <p>
-        <strong>email:</strong>
+        <strong><%= User.human_attribute_name(:email) %>:</strong>
         <%= user.email %>
       </p>
       <p>
-        <%= link_to "ユーザー詳細", "/users/#{user.id}" %>
+        <%= link_to t('views.common.show', name: User.model_name.human), "/users/#{user.id}" %>
       </p>
     </div>
   </div>
@@ -22,4 +22,4 @@
 
 <%= paginate @users %>
 
-<%= link_to "Back", books_path %>
+<%= link_to t('views.common.back', name: Book.model_name.human), books_path %>

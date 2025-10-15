@@ -1,6 +1,15 @@
 ---
 ja:
   activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        created_at: "登録日"
+        email: "メール"
+        postal_code: "郵便番号"
+        address: "住所"
+        self_introduction: "自己紹介"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -190,10 +199,12 @@ ja:
       back: "%{name}の一覧に戻る"
       delete_confirm: よろしいですか？
       title_index: "%{name}の一覧"
+      title_show: "%{name}の詳細"
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
+      log_out: "ログアウト"
     pagination:
       first: '« 最初'
       last: '最後 »'
@@ -205,3 +216,43 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+  devise:
+    sessions:
+      new:
+        title: "ログイン"
+        sign_in: "ログイン"
+    shared:
+      links:
+        sign_in: "ログイン"
+        sign_up: "新規登録する"
+        forgot_password: "パスワードを忘れましたか？"
+    passwords:
+      new:
+        title: "パスワードを忘れましたか？"
+        reset: "パスワードを再設定"
+      edit:
+        title: "パスワードを変更してください。"
+        new_password: "新しいパスワード"
+        characters_minimum: "最小文字数"
+        confirm_new_password: "新しいパスワードを確認"
+        change_my_password: "パスワードを変更する"
+    registrations:
+      new:
+        title: "新規登録"
+        characters_minimum: "最小文字数"
+        sign_up: "新規登録する"
+      edit:
+        new_password: "パスワードを変更しない場合は、入力しないでください。"
+        current_password: "ユーザー情報を変更をする場合は、現在のパスワードを入力"
+        cancel_my_account_title: "アカウントの削除"
+        unhappy: "退会を希望の場合"
+        cancel_my_acount_button: "アカウントを削除する"
+        confirm: "アカウントを削除してもいいですか？"
+    mailer:
+      reset_password_instructions:
+        greeting: "こんにちは、"
+        someone_requested_change: "パスワード変更のリクエストが送信されました。以下のリンクから変更手続きを行ってください。"
+        change_my_password: "パスワードを変更する"
+        ignore_if_not_requested: "このメールに心当たりがない場合は、破棄してください。"
+        not_changed_notice: "上記のリンクにアクセスして新しいパスワードを作成するまで、パスワードは変更されません。"
+      
