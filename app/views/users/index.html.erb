@@ -1,11 +1,11 @@
-<h1><%= t('views.common.title_index', name: User.model_name.human)%></h1>
+<h1><%= t('views.common.title_index', name: User.model_name.human) %></h1>
 
 <div id="users" class="index-items">
 <% @users.each do |user| %>
   <div class="index-item">
     <div id="<%= dom_id user %>">
       <p>
-        <strong><%= User.human_attribute_name(:created_at)%>:</strong>
+        <strong><%= User.human_attribute_name(:created_at) %>:</strong>
         <%= user.created_at.strftime("%Y年%m月%d日") %>
       </p>
       <p>

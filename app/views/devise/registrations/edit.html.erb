@@ -1,5 +1,5 @@
 <h2><%= t('views.common.title_edit', name: User.model_name.human) %></h2>
-<!--更新時のフラッシュメッセージ、これを入れると、値が更新されない。-->
+
 <p><%= notice %></p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -15,7 +15,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(<%= t('.new_password')%>)</i><br />
+    <%= f.label :password %> <i>(<%= t('.new_password') %>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
@@ -29,7 +29,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('.current_password')%>)</i><br />
+    <%= f.label :current_password %> <i>(<%= t('.current_password') %>)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -53,8 +53,8 @@
   </div>
 <% end %>
 
-<h3><%= t('.cancel_my_account_title')%></h3>
+<h3><%= t('.cancel_my_account_title') %></h3>
 
-<div><%= t('.unhappy')%> <%= button_to t('.cancel_my_acount_button'), registration_path(resource_name), data: { confirm: t('.confirm'), turbo_confirm: t('.confirm') }, method: :delete %></div>
+<div><%= t('.unhappy') %> <%= button_to t('.cancel_my_acount_button'), registration_path(resource_name), data: { confirm: t('.confirm'), turbo_confirm: t('.confirm') }, method: :delete %></div>
 
 <%= link_to t('views.common.back', name: Book.model_name.human), books_path %>
