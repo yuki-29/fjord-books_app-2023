@@ -11,7 +11,7 @@
 <div id="<%= dom_id @user %>">
   <p>
     <strong><%= User.human_attribute_name(:created_at) %>:</strong>
-    <%= @user.created_at.strftime("%Y年%m月%d日") %>
+    <%= l @user.created_at, format: :long %>
   </p>
   <p>
     <strong><%= User.human_attribute_name(:email) %>:</strong>
