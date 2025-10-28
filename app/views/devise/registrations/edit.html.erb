@@ -1,4 +1,4 @@
-<h2><%= t('views.common.title_edit', name: User.model_name.human) %></h2>
+<h2><%= t('.title', resource: User.model_name.human ) %></h2>
 
 <p><%= notice %></p>
 
@@ -15,11 +15,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(<%= t('.new_password') %>)</i><br />
+    <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> (<%= t('devise.registrations.new.characters_minimum') %>)</em>
+      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
     <% end %>
   </div>
 
@@ -29,7 +29,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('.current_password') %>)</i><br />
+    <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -49,12 +49,12 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t('helpers.submit.update') %>
+    <%= f.submit t('.update') %>
   </div>
 <% end %>
 
-<h3><%= t('.cancel_my_account_title') %></h3>
+<h3><%= t('.cancel_my_account') %></h3>
 
-<div><%= t('.unhappy') %> <%= button_to t('.cancel_my_acount_button'), registration_path(resource_name), data: { confirm: t('.confirm'), turbo_confirm: t('.confirm') }, method: :delete %></div>
+<div><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete %></div>
 
-<%= link_to t('views.common.back', name: Book.model_name.human), books_path %>
+<%= link_to t('devise.shared.links.back', name: Book.model_name.human), books_path %>
