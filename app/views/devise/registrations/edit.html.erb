@@ -34,10 +34,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :avatar %>
     <% if resource.avatar.attached? %>
       <%= image_tag resource.avatar.variant(:thumb) %>
     <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %>
     <%= f.file_field :avatar %>
   </div>
 
