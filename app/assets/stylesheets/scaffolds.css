@@ -220,6 +220,13 @@ Index
   text-align: right;
 }
 
+.user-menus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  float: right;
+}
+
 /****************
 Show
 ****************/
@@ -318,4 +325,11 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
   background-color: var(--global-primary-c-hover);
+}
+
+/****************
+users show
+****************/
+.user-edit {
+  padding-bottom: 10px;
 }

@@ -1,0 +1,25 @@
+<h1><%= t('views.common.title_index', name: User.model_name.human) %></h1>
+
+<div id="users" class="index-items">
+<% @users.each do |user| %>
+  <div class="index-item">
+    <div id="<%= dom_id user %>">
+      <p>
+        <strong><%= User.human_attribute_name(:created_at) %>:</strong>
+        <%= l user.created_at, format: :long %>
+      </p>
+      <p>
+        <strong><%= User.human_attribute_name(:email) %>:</strong>
+        <%= user.email %>
+      </p>
+      <p>
+        <%= link_to t('views.common.show', name: User.model_name.human), "/users/#{user.id}" %>
+      </p>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<%= paginate @users %>
+
+<%= link_to t('views.common.back', name: Book.model_name.human), books_path %>
