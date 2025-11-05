@@ -7,4 +7,12 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validate :avatar_content_type
+
+  def avatar_content_type
+    return unless avatar.attached? && !avatar.content_type.in?(%w[image/jpg image/jpeg image/png image/gif])
+
+    errors.add :avatar, message: 'ファイル形式は、画像のみ指定できます。'
+  end
 end

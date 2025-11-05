@@ -34,7 +34,7 @@
   </div>
 
   <div class="field">
-    <% if resource.avatar.attached? %>
+    <% if resource.avatar.attached? && resource.avatar.image? %>
       <%= image_tag resource.avatar.variant(:thumb) %>
     <% end %>
   </div>
