@@ -1,12 +1,10 @@
 <div id="<%= dom_id user %>">
   <p>
-    <%# 最後に翻訳する %>
-    <strong>ユーザーアイコン<%#= User.human_attribute_name(:email) %>:</strong>
+    <strong><%= User.human_attribute_name(:avatar) %>:</strong>
     <% if user.avatar.attached? %>
       <%= image_tag user.avatar.variant(:thumb) %>
     <% else %>
-    <%# 最後に翻訳する %>
-      未設定
+      <%= t('views.common.not_set') %>
     <% end %>
   </p>
 

@@ -13,6 +13,6 @@ class User < ApplicationRecord
   def avatar_content_type
     return unless avatar.attached? && !avatar.content_type.in?(%w[image/jpg image/jpeg image/png image/gif])
 
-    errors.add :avatar, message: 'ファイル形式は、画像のみ指定できます。'
+    errors.add :avatar, message: I18n.t('activerecord.errors.messages.avatar_content_type')
   end
 end
