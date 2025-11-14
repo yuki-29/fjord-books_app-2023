@@ -1,0 +1,18 @@
+<div id="<%#= dom_id book %>">
+
+ <%#作成日時%>
+  <p>
+    <strong>作成日時<%# = Book.human_attribute_name(:title) %>:</strong>
+    <%= report.created_at %>
+  </p>
+
+  <p>
+    <strong>タイトル<%#= Book.human_attribute_name(:memo) %>:</strong>
+    <%= report.title %>
+  </p>
+
+  <p>
+    <strong>内容<%# = Book.human_attribute_name(:author) %>:</strong>
+    <%= report.body %>
+  </p>
+</div>
