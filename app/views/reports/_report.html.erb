@@ -1,18 +1,17 @@
 <div id="<%#= dom_id book %>">
 
- <%#作成日時%>
   <p>
-    <strong>作成日時<%# = Book.human_attribute_name(:title) %>:</strong>
+    <strong><%= Report.human_attribute_name(:date_created) %>:</strong>
     <%= report.created_at %>
   </p>
 
   <p>
-    <strong>タイトル<%#= Book.human_attribute_name(:memo) %>:</strong>
+    <strong><%= Report.human_attribute_name(:title) %>:</strong>
     <%= report.title %>
   </p>
 
   <p>
-    <strong>内容<%# = Book.human_attribute_name(:author) %>:</strong>
+    <strong><%= Report.human_attribute_name(:body) %>:</strong>
     <%= report.body %>
   </p>
 </div>
