@@ -6,7 +6,10 @@ class ReportsController < ApplicationController
     @reports = Report.order(:id).page(params[:page])
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments =  @report.comments
+  end
 
   def new
     @report = Report.new

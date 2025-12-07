@@ -16,3 +16,46 @@
     <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
   <% end %>  
 </nav>
+
+<% # コメントの表示%>
+<p>コメント一覧</p>
+  <% @comments.each do |comment| %>
+  <div class="show-item">
+   <p>
+    <strong>コメント投稿日:</strong>
+    <%= comment.created_at %>
+  </p>
+  <p>
+  <strong>ユーザー:</strong>
+    <% if current_user.name.empty? %>
+      <%= current_user.email %>
+    <% else %>
+      <%= current_user.name %>
+    <% end %>
+  </p>
+  <p>
+    <strong>コメントの内容:</strong>
+    <%= comment.body %>
+  </p>
+
+  <% if current_user.id == @report.user_id %>
+    <%= button_to 'コメントを削除', report_comment_path(@report, comment), method: :delete %>
+  <% end %> 
+
+  </div>
+<% end %>
+
+<% # コメント作成 %> 
+<p>コメントを投稿</p>
+<div class="show-item">
+<%= form_with model: @comment, url: report_comments_path(@report)  do |form| %>
+  <div>
+    <%= form.label "コメント作成", style: "display: block" %>
+    <%= form.text_area :body %>
+  </div>
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>
