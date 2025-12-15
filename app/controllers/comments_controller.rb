@@ -1,19 +1,18 @@
 class CommentsController < ApplicationController
-  before_action :set_report, only: %i[create destroy]
-  before_action :ensure_correct_user, only: %i[destroy]
+  before_action :set_commentable, only: %i[create destroy] 
+  before_action :set_comment, only: %i[destroy]
+  before_action :correct_user, only: %i[destroy] 
 
   def create
-    @comment = @report.comments.new(comment_params)
+    @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    @comment.commentable_type = "Report"
     @comment.save
-    redirect_to report_path(@report)
+    redirect_to @commentable
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to report_path(@report)
+    redirect_to @commentable
   end
   
   private
@@ -22,14 +21,22 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 
-  def set_report
-    @report = Report.find(params[:report_id])
+  def set_commentable
+    if params[:book_id]
+      @commentable = Book.find(params[:book_id])
+    elsif params[:report_id]
+      @commentable = Report.find(params[:report_id])
+    end
   end
 
-  def ensure_correct_user
-    if current_user.id != @report.user_id
+  def set_comment
+    @comment = @commentable.comments.find(params[:id])
+  end
+
+  def correct_user
+    if current_user.id != @comment.user_id
       flash[:notice] = "権限がありません"
-      redirect_to report_path(@report)
+      redirect_to @commentable
     end
   end
 

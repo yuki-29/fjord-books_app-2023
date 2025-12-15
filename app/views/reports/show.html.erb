@@ -19,39 +19,37 @@
 
 <% # コメントの表示%>
 <p>コメント一覧</p>
-  <% @comments.each do |comment| %>
-  <div class="show-item">
-   <p>
-    <strong>コメント投稿日:</strong>
-    <%= comment.created_at %>
-  </p>
-  <p>
-  <strong>ユーザー:</strong>
-    <% if current_user.name.empty? %>
-      <%= current_user.email %>
-    <% else %>
-      <%= current_user.name %>
+<% if @comments.present? %>
+    <% @comments.each do |comment| %>
+    <div class="show-item">
+    <p>
+      <strong>コメント投稿日:</strong>
+      <%= comment.created_at %>
+    </p>
+    <p>
+      <strong>ユーザー:</strong>
+      <%= comment.user.display_name %>
+    </p>
+    <p>
+      <strong>コメントの内容:</strong>
+      <%= comment.body %>
+    </p>
+    <% if current_user.id == comment.user_id %>
+      <%= button_to 'コメントを削除', report_comment_path(@report, comment), method: :delete %>
     <% end %>
-  </p>
-  <p>
-    <strong>コメントの内容:</strong>
-    <%= comment.body %>
-  </p>
-
-  <% if current_user.id == @report.user_id %>
-    <%= button_to 'コメントを削除', report_comment_path(@report, comment), method: :delete %>
-  <% end %> 
-
-  </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>コメントなし</p>
 <% end %>
 
 <% # コメント作成 %> 
 <p>コメントを投稿</p>
 <div class="show-item">
-<%= form_with model: @comment, url: report_comments_path(@report)  do |form| %>
+<%= form_with(model: [@report, @comment], url: polymorphic_path([@report, @comment])) do |form| %>
   <div>
     <%= form.label "コメント作成", style: "display: block" %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, required: true %>
   </div>
   
   <div>
