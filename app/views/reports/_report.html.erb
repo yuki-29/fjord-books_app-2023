@@ -2,7 +2,7 @@
 
   <p>
     <strong><%= Report.human_attribute_name(:date_created) %>:</strong>
-    <%= report.created_at %>
+    <%= l report.created_at, format: :long%>
   </p>
 
   <p>
