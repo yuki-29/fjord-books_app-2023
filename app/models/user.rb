@@ -10,7 +10,7 @@ class User < ApplicationRecord
   
   has_many :books
   has_many :reports, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :nullify
 
   def display_name
     name.present? ? name : email
