@@ -260,6 +260,11 @@ Show
   object-fit: contain;
 }
 
+/* コメント一覧用に追加スタイルを上書き定義 */
+.show-item.comments {
+  margin-bottom: 12px;
+}
+
 /****************
 New and Edit
 ****************/

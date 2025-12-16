@@ -21,7 +21,7 @@
 <p>コメント一覧</p>
 <% if @comments.present? %>
     <% @comments.each do |comment| %>
-    <div class="show-item">
+    <div class="show-item comments">
     <p>
       <strong>コメント投稿日:</strong>
       <%= l comment.created_at, format: :long %>
