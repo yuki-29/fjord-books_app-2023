@@ -65,7 +65,7 @@ class ReportsController < ApplicationController
 
   def correct_user
     if current_user.id != @report.user_id
-      flash[:notice] = "権限がありません"
+      flash[:notice] = t('errors.messages.unauthorized')
       redirect_to report_path(@report)
     end
   end

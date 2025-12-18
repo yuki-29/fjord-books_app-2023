@@ -109,6 +109,7 @@ ja:
       taken: はすでに存在します
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
+      unauthorized: 権限がありません
       wrong_length: は%{count}文字で入力してください
     template:
       body: 次の項目を確認してください
@@ -192,10 +193,16 @@ ja:
       title_index: "%{name}の一覧"
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
+      create_date: "%{name}作成日"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
+      user: ユーザー
+      content_item: "%{name}の内容"
+    comments:
+      no_comment: コメントなし
+      create: コメントの本文
     pagination:
       first: '« 最初'
       last: '最後 »'

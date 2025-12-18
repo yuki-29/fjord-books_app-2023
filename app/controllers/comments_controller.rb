@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
 
   def correct_user
     if current_user.id != @comment.user_id
-      flash[:notice] = "権限がありません"
+      flash[:notice] = t('errors.messages.unauthorized')
       redirect_to @commentable
     end
   end

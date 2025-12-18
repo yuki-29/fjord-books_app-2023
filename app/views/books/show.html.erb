@@ -11,38 +11,36 @@
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
 
-  <% # コメントの表示%>
-  <p>コメント一覧</p>
+  <p><%= t('views.common.title_index', name: Comment.model_name.human.downcase) %></p>
   <% if @comments.present? %>
     <% @comments.each do |comment| %>
     <div class="show-item comments">
      <p>
-      <strong>コメント投稿日:</strong>
+      <strong><%= t('views.common.create_date', name: Comment.model_name.human.downcase) %>:</strong>
       <%= l comment.created_at, format: :long %>
     </p>
     <p>
-    <strong>ユーザー:</strong>
+    <strong><%= t('views.common.user') %>:</strong>
       <%= comment.display_name %>
     </p>
     <p>
-      <strong>コメントの内容:</strong>
+      <strong><%= t('views.common.content_item', name: Comment.model_name.human.downcase) %>:</strong>
       <%= comment.body %>
     </p>
     <% if current_user.id == comment.user_id %>
-      <%= button_to 'コメントを削除', book_comment_path(@book, comment), method: :delete %>
+      <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), book_comment_path(@book, comment), method: :delete %>
     <% end %>
     </div>
   <% end %>
 <% else %>
-  <p>コメントなし</p>
+  <p><%= t('views.comments.no_comment', name: Comment.model_name.human.downcase) %></p>
 <% end %>
 
-<% # コメント作成 %>
-<p>コメントを投稿</p>
+<p><%= t('views.common.new', name: Comment.model_name.human.downcase) %></p>
 <div class="show-item">
 <%= form_with(model: [@book, @comment], url: polymorphic_path([@book, @comment])) do |form| %>
   <div>
-    <%= form.label "コメント作成", style: "display: block" %>
+    <%= form.label :body, t('views.comments.create'), style: "display: block" %>
     <%= form.text_area :body, required: true %>
   </div>
   <div>

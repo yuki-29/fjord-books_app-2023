@@ -4,6 +4,7 @@ ja:
       book: 本
       user: ユーザ
       report: 日報
+      comment: コメント
 
     attributes:
       book:
@@ -18,6 +19,6 @@ ja:
         self_introduction: 自己紹介文
         avatar: ユーザ画像
       report:
-        date_created: 作成日時
         title: タイトル
         body: 内容
+        

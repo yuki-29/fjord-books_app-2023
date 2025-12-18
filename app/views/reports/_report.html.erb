@@ -1,12 +1,12 @@
-<div id="<%#= dom_id book %>">
+<div id="<%= dom_id report %>">
 
   <p>
-    <strong><%= Report.human_attribute_name(:date_created) %>:</strong>
+    <strong><%= t('views.common.create_date', name: Report.model_name.human.downcase) %>:</strong>
     <%= l report.created_at, format: :long%>
   </p>
 
   <p>
-    <strong>ユーザー:</strong>
+    <strong><%= t('views.common.user') %>:</strong>
     <%= report.user.display_name %>
   </p>
 
@@ -16,7 +16,7 @@
   </p>
 
   <p>
-    <strong><%= Report.human_attribute_name(:body) %>:</strong>
+    <strong><%= t('views.common.content_item', name: Report.model_name.human.downcase) %>:</strong>
     <%= report.body %>
   </p>
 </div>
