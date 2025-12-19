@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[edit update destroy]
@@ -8,7 +10,7 @@ class ReportsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments =  @report.comments.includes(:user)
+    @comments = @report.comments.includes(:user)
   end
 
   def new
@@ -47,7 +49,6 @@ class ReportsController < ApplicationController
     end
   end
 
-  
   private
 
   def set_report
@@ -59,10 +60,9 @@ class ReportsController < ApplicationController
   end
 
   def correct_user
-    if current_user.id != @report.user_id
-      flash[:notice] = t('errors.messages.unauthorized')
-      redirect_to report_path(@report)
-    end
-  end
+    return if current_user.id == @report.user_id
 
+    flash[:notice] = t('errors.messages.unauthorized')
+    redirect_to report_path(@report)
+  end
 end

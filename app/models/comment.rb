@@ -8,16 +8,15 @@ class Comment < ApplicationRecord
   before_create :set_user_info
 
   def display_name
-    user_name.present? ? user_name : user_email
+    (user_name.presence || user_email)
   end
 
   private
 
   def set_user_info
-    if user.present?
-      self.user_name = user.name if user_name.blank?
-      self.user_email = user.email if user_email.blank?
-    end
+    return if user.blank?
+
+    self.user_name = user.name if user_name.blank?
+    self.user_email = user.email if user_email.blank?
   end
-  
 end

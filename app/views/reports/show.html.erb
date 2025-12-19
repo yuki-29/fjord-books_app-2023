@@ -13,7 +13,7 @@
 
   <% if current_user.id == @report.user_id %>
     <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
-  <% end %>  
+  <% end %>
 </nav>
 
 <p><%= t('views.common.title_index', name: Comment.model_name.human.downcase) %></p>
@@ -48,7 +48,7 @@
     <%= form.label :body, t('views.comments.create'), style: "display: block" %>
     <%= form.text_area :body, required: true %>
   </div>
-  
+
   <div>
     <%= form.submit %>
   </div>
