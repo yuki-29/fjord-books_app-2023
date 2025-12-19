@@ -33,6 +33,17 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label t('.avatar') %>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="field">
+    <% if resource.avatar.attached? && resource.avatar.image? %>
+      <%= image_tag resource.avatar.variant(:thumb) %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit t('.update') %>
   </div>

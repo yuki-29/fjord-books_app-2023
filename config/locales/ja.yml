@@ -3,6 +3,7 @@ ja:
   activerecord:
     errors:
       messages:
+        avatar_content_type: 'ファイル形式は、画像のみ指定できます'
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
@@ -196,6 +197,7 @@ ja:
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
+      not_set: 未設定
     pagination:
       first: '« 最初'
       last: '最後 »'
@@ -216,3 +218,4 @@ ja:
     registrations:
       edit:
         title: "アカウント編集"
+        avatar: "ユーザーアイコン"
