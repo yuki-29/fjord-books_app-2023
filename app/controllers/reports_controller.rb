@@ -17,7 +17,7 @@ class ReportsController < ApplicationController
   end
 
   def edit; end
-
+  
   def create
     @report = current_user.reports.new(report_params)
 
@@ -51,4 +51,5 @@ class ReportsController < ApplicationController
   def report_params
     params.require(:report).permit(:title, :content)
   end
+ 
 end
