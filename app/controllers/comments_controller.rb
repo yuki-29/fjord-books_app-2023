@@ -8,12 +8,16 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    @comment.save
-    redirect_to @commentable
+    if @comment.save
+      redirect_to @commentable
+    else
+      set_render_variables
+      render "#{@commentable.class.table_name}/show", status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @comment.destroy
+    @comment.destroy!
     redirect_to @commentable
   end
 
@@ -28,6 +32,17 @@ class CommentsController < ApplicationController
       @commentable = Book.find(params[:book_id])
     elsif params[:report_id]
       @commentable = Report.find(params[:report_id])
+    end
+  end
+
+  def set_render_variables
+    case @commentable
+    when Book
+      @book = @commentable
+      @comments = @book.comments.order(:id)
+    when Report
+      @report = @commentable
+      @comments = @report.comments.order(:id).includes(:user)
     end
   end
 
