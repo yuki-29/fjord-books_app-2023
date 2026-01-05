@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @report.comments.includes(:user)
+    @comments = @report.comments.order(:id).includes(:user)
   end
 
   def new
