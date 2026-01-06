@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-
   before_destroy :archive_comments
 
   devise :database_authenticatable, :registerable,
@@ -17,9 +16,9 @@ class User < ApplicationRecord
   def display_name
     (name.presence || email)
   end
-  
+
   private
- 
+
   def archive_comments
     comments.where(user_id: id).update_all(user_name: name, user_email: email)
   end
