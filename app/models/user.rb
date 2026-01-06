@@ -21,6 +21,6 @@ class User < ApplicationRecord
   private
  
   def archive_comments
-    self.comments.where(user_id: self.id).update_all(user_name: self.name, user_email: self.email)
+    comments.where(user_id: id).update_all(user_name: name, user_email: email)
   end
 end
