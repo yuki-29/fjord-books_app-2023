@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
+
+  URL_DETECTION = /http:\/\/localhost:3000\/reports\/([0-9]+)/
+
+  after_save :save_mentions
+
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   # 1:多 レポートから、mentioning_report, mentioned_reportを紐づける。
@@ -21,5 +26,26 @@ class Report < ApplicationRecord
 
   def created_on
     created_at.to_date
+  end
+
+  private
+
+  def save_mentions
+    report_ids = self.content.scan(URL_DETECTION).flatten.map(&:to_i)
+    mention_ids = self.mentioned_reports.ids
+
+    if report_ids.sort != mention_ids.sort
+      delete_ids = mention_ids - report_ids
+      mention = self.active_mentions.where(mentioned_report_id: delete_ids)
+      mention.destroy_all
+
+      report_ids.each do |id|
+        if !self.active_mentions.where(mentioned_report_id: id).present?
+          mention = self.active_mentions.build(mentioned_report_id: id)
+          mention.save
+        end
+      end
+    end
+
   end
 end
