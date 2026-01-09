@@ -6,6 +6,20 @@
 
 <%= render 'shared/comments', commentable: @report %>
 
+<h2>この日報に言及している日報一覧</h2>
+
+<% if @mentioned_reports.present? %>
+  <ul>
+    <% @mentioned_reports.each do |report| %>
+      <li>
+        <%= link_to report.title, report %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>言及された日報はありません。</p>
+<% end %>
+
 <nav class="page-nav">
   <% if @report.editable?(current_user) %>
     <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
