@@ -31,21 +31,9 @@ class Report < ApplicationRecord
   private
 
   def save_mentions
-    report_ids = self.content.scan(URL_DETECTION).flatten.map(&:to_i)
-    mention_ids = self.mentioned_reports.ids
-
-    if report_ids.sort != mention_ids.sort
-      delete_ids = mention_ids - report_ids
-      mention = self.active_mentions.where(mentioned_report_id: delete_ids)
-      mention.destroy_all
-
-      report_ids.each do |id|
-        if !self.active_mentions.where(mentioned_report_id: id).present?
-          mention = self.active_mentions.build(mentioned_report_id: id)
-          mention.save
-        end
-      end
-    end
-
+    report_ids = self.content.scan(URL_DETECTION).flatten.map(&:to_i).uniq
+    reports = Report.where(id: report_ids)
+    self.mentioned_reports = reports
   end
+
 end
