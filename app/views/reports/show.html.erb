@@ -6,7 +6,7 @@
 
 <%= render 'shared/comments', commentable: @report %>
 
-<h2>この日報に言及している日報一覧</h2>
+<h2><%= t('views.mentions.title') %></h2>
 
 <% if @mentioned_reports.present? %>
   <ul>
@@ -17,7 +17,7 @@
     <% end %>
   </ul>
 <% else %>
-  <p>言及された日報はありません。</p>
+  <p><%= t('views.mentions.no_mentions') %></p>
 <% end %>
 
 <nav class="page-nav">
