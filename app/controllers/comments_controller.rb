@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_commentable, only: %i[create destroy]
+  before_action :set_commentable, only: %i[create]
   before_action :set_comment, only: %i[destroy]
   before_action :correct_user, only: %i[destroy]
 
@@ -27,26 +27,8 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 
-  def set_commentable
-    if params[:book_id]
-      @commentable = Book.find(params[:book_id])
-    elsif params[:report_id]
-      @commentable = Report.find(params[:report_id])
-    end
-  end
-
-  def set_render_variables
-    case @commentable
-    when Book
-      @book = @commentable
-      @comments = @book.comments.order(:id)
-    when Report
-      @report = @commentable
-      @comments = @report.comments.order(:id).includes(:user)
-    end
-  end
-
   def set_comment
+    set_commentable
     @comment = @commentable.comments.find(params[:id])
   end
 
