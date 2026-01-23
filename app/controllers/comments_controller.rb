@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_commentable, only: %i[create]
+  before_action :set_commentable, only: %i[create destroy]
   before_action :set_comment, only: %i[destroy]
   before_action :correct_user, only: %i[destroy]
 
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       redirect_to @commentable
     else
       set_render_variables
-      render "#{@commentable.class.table_name}/show", status: :unprocessable_entity
+      render "#{view_namespace}/show", status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,6 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    set_commentable
     @comment = @commentable.comments.find(params[:id])
   end
 

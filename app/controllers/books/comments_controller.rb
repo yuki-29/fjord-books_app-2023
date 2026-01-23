@@ -3,6 +3,10 @@
 class Books::CommentsController < CommentsController
   private
 
+  def view_namespace
+    "books"
+  end
+
   def set_commentable
     @commentable = Book.find(params[:book_id])
   end
