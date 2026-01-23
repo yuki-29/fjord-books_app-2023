@@ -4,7 +4,7 @@ class Reports::CommentsController < CommentsController
   private
 
   def view_namespace
-    "reports"
+    'reports'
   end
 
   def set_commentable

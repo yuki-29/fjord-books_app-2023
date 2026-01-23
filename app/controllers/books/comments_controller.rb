@@ -4,7 +4,7 @@ class Books::CommentsController < CommentsController
   private
 
   def view_namespace
-    "books"
+    'books'
   end
 
   def set_commentable
