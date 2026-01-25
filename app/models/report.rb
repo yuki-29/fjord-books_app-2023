@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
-  URL_DETECTION = %r{http://localhost:3000/reports/([0-9]+)}
+  REPORT_URL_REGEX = %r{http://localhost:3000/reports/([0-9]+)}
 
   after_save :save_mentions
 
@@ -28,7 +28,7 @@ class Report < ApplicationRecord
   private
 
   def save_mentions
-    report_ids = content.scan(URL_DETECTION).flatten.map(&:to_i).uniq
+    report_ids = content.scan(REPORT_URL_REGEX).flatten.map(&:to_i).uniq
     reports = Report.where(id: report_ids)
     self.mentioning_reports = reports
   end
