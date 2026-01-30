@@ -6,6 +6,20 @@
 
 <%= render 'shared/comments', commentable: @report %>
 
+<h2><%= t('views.mentions.title') %></h2>
+
+<% if @mentioned_reports.present? %>
+  <ul>
+    <% @mentioned_reports.each do |report| %>
+      <li>
+        <%= link_to report.title, report %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p><%= t('views.mentions.no_mentions') %></p>
+<% end %>
+
 <nav class="page-nav">
   <% if @report.editable?(current_user) %>
     <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
