@@ -1,7 +1,7 @@
 <h1><%= t('views.common.title_show', name: Book.model_name.human) %></h1>
 
 <div class="show-item">
-  <%= render @book %>
+  <%= render partial: 'books/book', locals: { book: @book } %>
 </div>
 
 <nav class="page-nav">
@@ -10,3 +10,41 @@
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
+
+  <p><%= t('views.common.title_index', name: Comment.model_name.human.downcase) %></p>
+  <% if @comments.present? %>
+    <% @comments.each do |comment| %>
+    <div class="show-item comments">
+     <p>
+      <strong><%= t('views.common.create_date', name: Comment.model_name.human.downcase) %>:</strong>
+      <%= l comment.created_at, format: :long %>
+    </p>
+    <p>
+    <strong><%= t('views.common.user') %>:</strong>
+      <%= comment.display_name %>
+    </p>
+    <p>
+      <strong><%= t('views.common.content_item', name: Comment.model_name.human.downcase) %>:</strong>
+      <%= comment.body %>
+    </p>
+    <% if current_user.id == comment.user_id %>
+      <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), book_comment_path(@book, comment), method: :delete %>
+    <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t('views.comments.no_comment', name: Comment.model_name.human.downcase) %></p>
+<% end %>
+
+<p><%= t('views.common.new', name: Comment.model_name.human.downcase) %></p>
+<div class="show-item">
+<%= form_with(model: [@book, @comment], url: polymorphic_path([@book, @comment])) do |form| %>
+  <div>
+    <%= form.label :body, t('views.comments.create'), style: "display: block" %>
+    <%= form.text_area :body, required: true %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>
